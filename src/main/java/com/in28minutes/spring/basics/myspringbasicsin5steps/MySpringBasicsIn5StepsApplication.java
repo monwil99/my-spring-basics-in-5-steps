@@ -23,7 +23,7 @@ public class MySpringBasicsIn5StepsApplication {
 		//int result = binarySearch.binarySearch(new int[] {12, 4, 6}, 3);
 		
 		//Spring boot returns the application context and no need to specify the package where beans can be found or scan since
-		//spring boot autmotacilly in the same package and sub package
+		//spring boot automatically scan in the same package and sub package
 		ApplicationContext applicationContext = SpringApplication.run(MySpringBasicsIn5StepsApplication.class, args);
 		BinarySearchImpl binarySearch = applicationContext.getBean(BinarySearchImpl.class);
 		int result = binarySearch.binarySearch(new int[] {12, 4, 6}, 3);
