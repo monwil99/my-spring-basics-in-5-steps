@@ -22,18 +22,23 @@ public class MySpringBasicsIn5StepsApplicationv3WithoutSpringBoot {
 			
 	public static void main(String[] args) {
 		
-		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(MySpringBasicsIn5StepsApplicationv3WithoutSpringBoot.class);
-				
-		//First, no qualifying bean found for BinarySearch since we dont have spring boot for component scan
-		BinarySearchImpl binarySearch = applicationContext.getBean(BinarySearchImpl.class);
+		//Java 7 you can use try catch to close the connection even there is no exception - implementing AUTO close
+		try (AnnotationConfigApplicationContext applicationContext = new 
+				AnnotationConfigApplicationContext(MySpringBasicsIn5StepsApplicationv3WithoutSpringBoot.class)){
+					
+			//First, no qualifying bean found for BinarySearch since we dont have spring boot for component scan
+			BinarySearchImpl binarySearch = applicationContext.getBean(BinarySearchImpl.class);
+			
+			System.out.println(binarySearch);
+			
+			int result = binarySearch.binarySearch(new int[] {12, 4, 6}, 3);
+			
+			
+			System.out.println(result);
+		}
 		
-		System.out.println(binarySearch);
-		
-		int result = binarySearch.binarySearch(new int[] {12, 4, 6}, 3);
-		
-		
-		System.out.println(result);
-		System.out.println("yeye");
+		//close application context
+		//applicationContext.close();
 
 	}
 }
